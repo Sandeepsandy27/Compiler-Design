@@ -1,0 +1,31 @@
+%{
+#include<stdio.h>
+int p_count=0;
+int n_count=0;
+%}
+
+
+/* this sections is known as defined section in which we defined the rule and regulation of regular expression which will going to accept or not */
+
+%%
+[+]?([0-9])+ {
+
+/* this is for increment and print the positive integer eg: 96, +36 */
+
+p_count++; printf("Positive Integer:%s\n",yytext);}
+[-]([0-9])+ {
+
+/* this is for increment and print the negative integer eg: -96, -36 */
+
+n_count++; printf("negative Integer:%s\n",yytext);}
+
+%%
+
+/* main function for calling the function */
+
+void main(int argc[],char *argv[])
+{
+yylex();
+printf("the total number of Postive Integer are: %d\n" ,p_count);
+printf("the total number of Negative Integer are:%d\n",n_count);
+}
